@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.model.Stock;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,8 +12,9 @@ public class ApiService {
 
     private final String API_KEY = "0a6f4e847808b1b349d15b37493da586";
 
-    //public Stock getStock(String info){
-       // Stock stock = new Stock();
-       // restTemplate.getForObject(API_BASE_URL + info + "?apikey=" + API_KEY);
-    //}
+    public Stock getStock(String info){
+        Stock stock = new Stock();
+        stock = restTemplate.getForObject(API_BASE_URL + info + "?apikey=" + API_KEY, Stock.class);
+        return stock;
+    }
 }
